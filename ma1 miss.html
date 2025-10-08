@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio - Jillian Smile G. Ganway</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables: MINT, OLIVE GREEN, and WHITE theme */
+        :root {
+            --mint-bg: #E0FFD1; /* Soft mint green background */
+            --olive-green: #556B2F; /* Olive green for accents, header, footer */
+            --white-text: #FFFFFF; /* White for contrast on olive green */
+            --dark-text: #333333; /* Dark text for readability on lighter backgrounds */
+            --light-card-bg: #F0FFF0; /* Very light mint/cream for content cards */
+            --shadow-color: rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--mint-bg); /* Main background is mint */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--dark-text); /* Default text is dark on light mint */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif; /* Elegant heading font */
+            color: var(--olive-green); /* Headings are olive green */
+            margin-bottom: 0.5em;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--olive-green); /* Header is olive green */
+            color: var(--white-text); /* Header text is white */
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--white-text);
+            font-size: 2.8em;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-style: italic;
+            font-size: 1.2em;
+            color: var(--white-text);
+        }
+
+        nav {
+            background-color: var(--light-card-bg);
+            padding: 10px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 18px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--olive-green);
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--white-text);
+            background-color: var(--olive-green);
+        }
+
+        .section {
+            padding: 40px;
+            margin: 0 auto 40px auto;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 15px;
+            background-color: var(--light-card-bg);
+            box-shadow: 0 5px 20px var(--shadow-color);
+            position: relative;
+            color: var(--dark-text);
+        }
+        
+        /* Olive Green Decorative Corners */
+        .section::before, .section::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-color: var(--olive-green);
+            border-style: solid;
+        }
+        .section::before {
+            top: 20px; left: 20px;
+            border-width: 2px 0 0 2px;
+            border-radius: 5px 0 0 0;
+        }
+        .section::after {
+            bottom: 20px; right: 20px;
+            border-width: 0 2px 2px 0;
+            border-radius: 0 0 5px 0;
+        }
+
+        /* Profile Photo Box */
+        .profile-photo-box {
+            width: 220px;
+            height: 220px;
+            background-color: var(--white-text);
+            border: 4px dashed var(--olive-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0 auto 35px auto;
+            box-shadow: 0 6px 18px var(--shadow-color);
+        }
+
+        .profile-photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .about-content {
+            text-align: center;
+        }
+        
+        /* Education and Experience Styles */
+        .timeline-item {
+            border-left: 3px solid var(--olive-green);
+            padding-left: 25px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item h3 {
+            margin-top: 0;
+            color: var(--dark-text);
+        }
+        
+        .timeline-item::before {
+            content: '•';
+            position: absolute;
+            left: -12px;
+            top: 4px;
+            font-size: 1.7em;
+            color: var(--olive-green);
+            background-color: var(--light-card-bg);
+            border-radius: 50%;
+            padding: 0 6px;
+            line-height: 1;
+        }
+        
+        .role, .dates {
+            font-weight: bold;
+            color: var(--olive-green);
+        }
+        
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            background-color: var(--olive-green);
+            color: var(--white-text);
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .btn:hover {
+            background-color: #6B8E23;
+            transform: translateY(-2px);
+        }
+        
+        /* Portfolio Grid (adjusted for direct usage) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+                
+        .portfolio-item {
+            background-color: var(--white-text);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-content h3 {
+            margin-top: 0;
+            font-size: 1.6em;
+            color: var(--olive-green);
+        }
+
+        .portfolio-content p {
+            font-size: 1em;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+        }
+
+        /* Contact Info */
+        .contact-info a {
+            color: var(--olive-green);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--dark-text);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background-color: var(--olive-green);
+            color: var(--white-text);
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            box-shadow: 0 -4px 15px var(--shadow-color);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 25px 15px;
+            }
+            header h1 {
+                font-size: 2.2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            nav {
+                width: 95%;
+                margin-bottom: 20px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            nav ul li a {
+                font-size: 1em;
+                padding: 6px 12px;
+            }
+            .section {
+                width: 95%;
+                padding: 30px 20px;
+                margin-bottom: 30px;
+            }
+            .profile-photo-box {
+                width: 180px;
+                height: 180px;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .portfolio-item img {
+                height: 180px;
+            }
+            .portfolio-content h3 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jillian Smile G. Ganway</h1>
+        <p>Information Technology Student | Class of 2025-2026</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about" class="active">Summary</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    
+    <section id="about" class="section">
+        <h2 style="text-align: center;">Hello, I'm Jillian Smile G. Ganway</h2>
+
+        <div class="profile-photo-box">
+            <img src="HTML.jpg" alt="Your Profile Photo"> 
+        </div>
+
+        <div class="about-content">
+            <p>I am a highly motivated second-year BSIT student studying at Holy Child Central Colleges, Inc. I’m driven by a passion for editing, design, and creative technology, and I’m committed to developing digital solutions that are both innovative and visually engaging.</p>
+            <p>My goal is to build a career in IT and digital design, where I can apply my technical skills, creativity, and problem-solving abilities to produce meaningful results.</p>
+            <p>I thrive in environments that value creativity, collaboration, and continuous learning. Check out my work below!</p>
+            <a class="btn" href="#projects">View My Projects</a>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <h2>Education & Experience</h2>
+        
+        <div class="timeline-item">
+            <h3>Holy Child Central College Inc.</h3>
+            <p class="role">Bachelor of Science in Information Technology</p>
+            <p class="dates">2024 – 2025</p>
+            <p>Relevant Coursework: Web Development, Multimedia and Graphic Design.</p>
+        </div>
+        
+        <div class="timeline-item">
+            <h3>Certification</h3>
+            <p class="role">Computer Systems Servicing (CSS) NC II </p>
+            <p class="dates">2024</p>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Academic Projects & Portfolio</h2>
+        <p style="text-align: center; margin-bottom: 30px;">This section highlights my best schoolwork, personal projects, and skills.</p>
+        
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-item">
+               <img src="pic 2.png" alt="Project Screenshot/Image">
+                <div class="portfolio-content">
+                    <h3>Final Project: Personal Portfolio Website</h3>
+                    <p>A project that involved building a responsive personal portfolio website using HTML, CSS</p>
+                    <a class="btn" href="#">View Report/Code</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 style="text-align: center;">Let's Connect!</h2>
+        <div class="about-content">
+            <p>I’m open to internship and creative tech opportunities. Let’s connect and create something beautiful together ♡</p>
+            <p style="font-size: 1.1em; font-weight: bold; margin: 15px 0;">Email: <a href="mailto:Jilliansgl17@gmail.com">Jilliansgl17@gmail.com</a></p>
+            <p>Facebook: <a href="https://facebook.com/yourusername" target="_blank">Jillian Ganway</a></p>
+            <p>Telegram: <a href="https://t.me/yourusername" target="_blank">0997-166-4068</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy;2025 Jillian Smile G. Ganway | BSIT Student Portfolio. Built with a touch of cuteness.</p>
+    </footer>
+</body>
+</html>
